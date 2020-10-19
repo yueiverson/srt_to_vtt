@@ -15,7 +15,6 @@ def convert_TimeNuber(filename): #filename為srt的檔案名稱
             rename_time.append(times)
     with open('output.srt','w',encoding="utf-8") as n:
         n.writelines(rename_time)
-        print(rename_time)
     with open('output.srt','r',encoding="utf-8") as f:
         texts = f.readline()
         delete_number=[]
@@ -29,5 +28,9 @@ def convert_TimeNuber(filename): #filename為srt的檔案名稱
     with open('convert'+filename,'w',encoding="utf-8") as n:
         n.writelines('WEBVTT\nKind:captions\nLanguage:zh-TW\n')
         n.writelines(delete_number)
-        print(delete_number)
     os.remove('output.srt')
+    if os.path.exists(filename) is not True:
+        print('轉檔完成，轉檔名稱為:convert{}，於本檔案夾中。'.format(filename))
+    else:
+        print("轉檔失敗") 
+    
